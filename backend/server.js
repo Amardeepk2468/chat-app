@@ -11,12 +11,12 @@ dotenv.config();
 connectDB();
 const app = express();
 const frontend_url = process.env.FRONTEND_URI;
-// app.use(cors({
-//   origin : `${frontend_url}`
-// }));
 app.use(cors({
-  origin : "*"
+  origin : `${frontend_url}`
 }));
+// app.use(cors({
+//   origin : "*"
+// }));
 const PORT =5000;
 
 
@@ -43,8 +43,8 @@ const io=require('socket.io')(
   server,{
     pingTimeout:60000,
     cors:{
-    // origin:"https://real-time-messenger-green.vercel.app",
-    origin : "http://localhost:3000"
+    origin:frontend_url,
+    // origin : "http://localhost:3000"
     } 
   }
 )
