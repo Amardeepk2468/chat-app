@@ -12,7 +12,8 @@ connectDB();
 const app = express();
 const frontend_url = process.env.FRONTEND_URI;
 app.use(cors({
-  origin : `${frontend_url}`
+  origin : frontend_url,
+  methods : ['GET','POST','PUT','DELETE ']
 }));
 // app.use(cors({
 //   origin : "*"
@@ -45,7 +46,9 @@ const io=require('socket.io')(
     cors:{
     origin:frontend_url,
     // origin : "http://localhost:3000"
-    } 
+    methods : ['GET','POST','PUT','DELETE ']
+    }
+    
   }
 )
 
